@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware('auth')->group(function() {
+    
+    Route::get('/account', 'AccountController@show');    
+
+    Route::get('/document', 'DocumentController@show');
+    Route::get('/settings', 'SettingsController@show');
+
+    Route::post('/settings', 'SettingsController@update');
+    
+});
